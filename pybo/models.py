@@ -21,3 +21,10 @@ class DrowsinessData(db.Model):
     d_picture=db.Column(db.String(100),default='Unknown.jpg')
     start_time=db.Column(db.DateTime,nullable=False)
     end_time=db.Column(db.DateTime,nulable=False)
+
+   class User(db.Model):
+    user_id = db.Column(db.String(6), primary_key=True, nullable=False)
+    nickname = db.Column(db.String(20), nullable=False)
+    id = db.Column(db.String(20), unique=True, nullable=False)
+    password = db.Column(db.String(20), nullable=False)
+    profile_image = db.Column(LargeBinary, nullable = True)
