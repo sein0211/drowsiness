@@ -13,6 +13,7 @@ class TimeTable(db.Model):
     sunClass = db.Column(db.String(200))
 
 class DrowsinessData(db.Model):
+    __table_name__='DrowsinessData'
     d_data=db.Column(db.Integer,primary_key=True)
     # user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
     # user = db.relationship('User', backref=db.backref('time_table'))
