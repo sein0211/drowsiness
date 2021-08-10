@@ -15,8 +15,8 @@ class TimeTable(db.Model):
 class DrowsinessData(db.Model):
     __table_name__='DrowsinessData'
     d_data=db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
-    user = db.relationship('User', backref=db.backref('time_table'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id', ondelete='CASCADE'))
+    user = db.relationship('User', backref=db.backref('d_data_set'))
     d_time=db.Column(db.DateTime,nullable=False)
     d_picture=db.Column(db.String(100),default='Unknown.jpg')
     start_time=db.Column(db.DateTime,nullable=False)
