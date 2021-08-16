@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Log in</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <div id="logo">
+                <img src="{{ url_for('static', filename='png/loginLogo.png') }}" width="200px">
+            </div>
+
+            <div class="container">
+
+                <div class="log_left">
+                    <form method="post" class="post-form">
+                        {{ form.csrf_token }}
+                        {% include "form_errors.html" %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="student_id" id="student_id"
+                                   placeholder="아이디" value="{{ form.student_id.data or '' }}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="password"
+                                   placeholder="비밀번호" value="{{ form.password.data or '' }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">로그인</button>
+                    </form>
+{#                    <p class="findacnt">#}
+{#                        <a href="findid.html">아이디찾기</a>#}
+{#                        <a href="findpw.html">비밀번호찾기</a>#}
+{#                    </p>#}
+                </div>
+
+                <div class="log_right">
+                    <a id="signup" href="../resources/signup.html">회원가입</a>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
