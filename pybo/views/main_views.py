@@ -9,4 +9,4 @@ def hello_pybo():
 
 @bp.route('/')
 def index():
-    return 'Pybo index'
+    return 'Hello Flask'
