@@ -1,0 +1,52 @@
+
+a{
+    text-decoration: none;
+}
+.wrap{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+.my_box{
+    display: flex;
+    flex-direction:row;
+    line-height:21px;
+    justify-content:space-between;  /* 양쪽정렬 */
+    margin-top:20px;
+    width:250px;
+}
+.container{
+    display:flex;
+    float:left;
+    justify-content: center;
+    align-items:center;
+    margin-top:60px;
+    text-align:center;
+}
+#logo{
+    padding-top:100px;
+}
+.btn{
+    justify-content: center;
+    line-height: 90px;
+    width:120px;
+    height:90px;
+    margin:15px 10px;
+    background-color: rgb(181,214,146);
+    border:none;
+    border-radius: 0.2rem;
+}
+.btn:hover{
+    background-color: rgba(181, 214, 146, 0.753);
+}
+#log_btn{
+    display:flex;
+    justify-content: center;    
+    background-color: rgba(181, 214, 146, 0.753);
+    width:80px;   
+    border-radius: 0.2rem;
+}
+#hello_txt{
+    font-weight: bolder;
+}

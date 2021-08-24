@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>얘들아 수업듣자!</title>
+    </head>
+    <body>
+        <div class="wrap">    
+            <div id="logo">
+                <img src="../static/logo.png" width="200px">
+            </div>
+            <div class="my_box">
+                <div id="hello_txt">학생1님 반가워요!</div>
+                <div id="log_btn"><a href="{{url_for('login')}}">LOGOUT</a></div>
+            </div>
+            <div class="container">
+                <div class="btn"> <a href=""> TIME TABLE </a> </div>
+                <div class="btn"> <a href="{{url_for('camera')}}"> CLASS </a> </div>
+            </div>
+    </body>
+</html>

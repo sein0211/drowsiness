@@ -27,10 +27,11 @@ def create_app():
     # 전역변수로 db, migrate 객체를 만든 다음 init_app 메서드를 이용해 기초
 
     # 블루프린트
-    from .views import main_views, login_views, auth_views
+    from .views import main_views, login_views, auth_views, camera_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(login_views.bp)
     app.register_blueprint(auth_views.bp)
+    app.register_blueprint(camera_views.bp)
     # create_app 함수에 등록된 hello_pybo 함수 대신 블루프린트를 사용하도록 변경
     # 블루프린트를 사용하기 위해 main_views.py파일에서 생성한 블루프린트 객체 bp 등록
 
