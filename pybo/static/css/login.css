@@ -41,20 +41,19 @@ a{
     box-sizing: border-box;
 }
 input{
-    width:250px;
+    width:254px;
     height: 30px;
     border:none;
     border-bottom: 2px solid #adadad;
     font-size:16px;
 }
 button[type=submit]{
-    width:90px;
-    height:90px;
-    margin:15px 10px;
+    width:258px;
+    height:30px;
+    margin:15px 0px;
     background-color: rgb(181,214,146);
     border:none;
     border-radius: 0.2rem;
 }
 #signup{
-    margin-left:10px;
 }
