@@ -28,4 +28,4 @@ class User(db.Model):
     nickname = db.Column(db.String(20), nullable=False)
     student_id = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(20), nullable=False)
-    profile_image = db.Column(db.String(100), default='profile.png')
+    profile_image = db.Column(db.File, default='profile.png')
