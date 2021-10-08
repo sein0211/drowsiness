@@ -1,6 +1,6 @@
-from flask import Flask, Blueprint, render_template, request
-from werkzeug.utils import secure_filename
 import os
+
+from flask import Flask, Blueprint, render_template, request
 
 bp = Blueprint('myPage', __name__, url_prefix='/myPage')
 app = Flask(__name__)
