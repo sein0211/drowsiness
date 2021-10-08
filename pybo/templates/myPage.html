@@ -1,17 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이 페이지</title>
-</head>
-<body>
-    <div id="hello_txt">마이 페이지</div>
-    <form action = "http://localhost:5000/myPage/uploader"
-          method="post"
-          enctype="multipart/form-data">
-        <input type="file" name ="file"/>
-        <input type="submit"/>
-    </form>
-</body>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/mypage.css') }}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign up</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <div id="logo">
+                <img src="{{ url_for('static', filename='image/logo.png') }}" width="200px">
+            </div>
+        <div class="container">
+            <div class="profile">
+                <div id="header">
+                    <h2>MY PAGE</h2>
+                </div>
+                <div id="pf_content">
+                    <dl>
+                        <form action = "http://localhost:5000/myPage/uploader"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <input type="file" name ="file"/>
+                            <input type="submit"/>
+                        </form>
+                        <dt>프로필사진</dt>
+                        <dd></dd>
+                        <dt>닉네임</dt>
+                        <dd>{{ username }}</dd>
+                        <dt>학번</dt>
+                        <dd>{{ student_id }}</dd>
+                        <dt>ID</dt>
+                        <dd>{{ id }}</dd>
+                    </dl>
+                </div>
+                <div id="dr_content">
+                    <dl>
+                        <dt>총 집중시간</dt>
+                        <dd></dd>
+                    </dl>
+                    <div class="print_sleep">
+                        <h3>sleep moment</h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
+
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="utf-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>마이 페이지</title>#}
+{#</head>#}
+{#<body>#}
+{#    <div id="hello_txt">마이 페이지</div>#}
+{#    <form action = "http://localhost:5000/myPage/uploader"#}
+{#          method="post"#}
+{#          enctype="multipart/form-data">#}
+{#        <input type="file" name ="file"/>#}
+{#        <input type="submit"/>#}
+{#    </form>#}
+{#</body>#}
+{#</html>#}
