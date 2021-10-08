@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, request
+from flask import Flask, Blueprint, render_template, request
 from werkzeug.utils import secure_filename
+import os
 
 bp = Blueprint('myPage', __name__, url_prefix='/myPage')
-
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = 'C:\projects\drowsiness\image'
 
 @bp.route('/')
 def myPage2():
@@ -16,7 +18,7 @@ def upload_file():
 def uploader_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save(secure_filename(f.filename))
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
         return '파일이 성공적으로 업로드되었습니다.'
 
 if __name__ == '__main__':
