@@ -19,7 +19,6 @@ def create_app():
     app.config.from_object(config)
     # config.py에 작성한 항목을 app.config 환경 변수로 부름
 
-
     # ORM
     db.init_app(app)
     migrate.init_app(app, db)

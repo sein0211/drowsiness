@@ -23,9 +23,9 @@ class DrowsinessData(db.Model):
     end_time = db.Column(db.DateTime,nullable=False)
 
 class User(db.Model):
-    __table_name__='User'
+    __table_nam__='User'
     id = db.Column(db.Integer, primary_key=True)
     nickname = db.Column(db.String(20), nullable=False)
     student_id = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(20), nullable=False)
-    profile_image = db.Column(db.File, default='profile.png')
+    profile_image = db.Column(db.String(100), default='profile.png')
