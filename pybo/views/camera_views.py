@@ -8,7 +8,7 @@ import timeit
 import dlib
 from scipy.spatial import distance as dist
 from imutils import face_utils
-from threading import Thread
+import threading
 import face_recognition  # dlib에 있는 거 불러온것
 # import camera  # camera.py 불러온 것
 import pygame
@@ -147,11 +147,13 @@ def init_open_ear():  # 눈을 뜬 상태의 평균 EAR 측정
     time.sleep(5)
     print("눈을 떠주세요")
     ear_list = []  # ear_list : 측정한 EAR값들을 저장하는 리스트
-    th1 = Thread(target=play_sound("open_your_eyes.mp3"))  # 동시 실행을 위해 스레드 사용
+    th1 = threading.Thread(target=play_sound("open_your_eyes.mp3"))  # 동시 실행을 위해 스레드 사용
     th1.start()
+
     time.sleep(5)  # 안내문구가 재생될 동안 일시정지
-    th_ring1 = Thread(target=play_sound("ppi.mp3"))
+    th_ring1 = threading.Thread(target=play_sound("ppi.mp3"))
     th_ring1.start()  # 삐 소리가 울리면서 EAR 측정 시작
+
     for i in range(7):
         ear_list.append(both_ear)  # 양안의 평균 EAR을 ear_list에 append
         time.sleep(1)
@@ -160,17 +162,19 @@ def init_open_ear():  # 눈을 뜬 상태의 평균 EAR 측정
     print("open list =", ear_list, "\nOPEN_EAR =", OPEN_EAR, "\n")
 
 
-def init_close_ear(th_open=None):  # 눈을 감은 상태의 평균 EAR 측정
+def init_close_ear():  # 눈을 감은 상태의 평균 EAR 측정
     time.sleep(2)
     th_open.join()  # 이전에 실행한 스레드가 종료될때까지 기다림
     time.sleep(5)
     print("눈을 감아주세요")
     ear_list = []  # ear_list: 측정한 EAR값들을 저장하는 리스트
-    th2 = Thread(target=play_sound("close_your_eyes.mp3"))  # 동시 실행을 위해 스레드 사용
+    th2 = threading.Thread(target=play_sound("close_your_eyes.mp3"))  # 동시 실행을 위해 스레드 사용
     th2.start()
+
     time.sleep(6)  # 안내문구가 재생될 동안 일시정지
-    th_ring2 = Thread(target=play_sound("ppi.mp3"))
+    th_ring2 = threading.Thread(target=play_sound("ppi.mp3"))
     th_ring2.start()
+
     time.sleep(1)
     for i in range(7):
         ear_list.append(both_ear)  # 양안의 평균 EAR을 ear_list에 append
@@ -183,17 +187,19 @@ def init_close_ear(th_open=None):  # 눈을 감은 상태의 평균 EAR 측정
     print("The last EAR_THRESH's value :", EAR_THRESH, "\n")
 
 
-def init_open_mouth(th_close=None):  # 입을 벌린 상태의 평균 MAR 측정
+def init_open_mouth():  # 입을 벌린 상태의 평균 MAR 측정
     time.sleep(2)
     th_close.join()  # 이전에 실행한 스레드가 종료될때까지 기다림
     time.sleep(5)
     print("입을 벌려주세요")
     mar_list = []  # mar_list: 측정한 MAR값들을 저장하는 리스트
-    th3 = Thread(target=play_sound("open_your_mouth.mp3"))  # 동시 실행을 위해 스레드 사용
+    th3 = threading.Thread(target=play_sound("open_your_mouth.mp3"))  # 동시 실행을 위해 스레드 사용
     th3.start()
+
     time.sleep(5)  # 안내문구가 재생될 동안 일시정지
-    th_ring3 = Thread(target=play_sound("ppi.mp3"))
+    th_ring3 = threading.Thread(target=play_sound("ppi.mp3"))
     th_ring3.start()
+
     for i in range(7):
         mar_list.append(mouth_mar)  # MAR을 mar_list에 append
         time.sleep(1)
@@ -202,17 +208,19 @@ def init_open_mouth(th_close=None):  # 입을 벌린 상태의 평균 MAR 측정
     print("open mouth =", mar_list, "\nOPEN_MAR =", OPEN_MAR, "\n")
 
 
-def init_close_mouth(mouth_open=None):  # 입을 다문 상태의 평균 MAR 측정
+def init_close_mouth():  # 입을 다문 상태의 평균 MAR 측정
     time.sleep(2)
     mouth_open.join()  # 이전에 실행한 스레드가 종료될때까지 기다림
     time.sleep(5)
     print("입을 다물어주세요")
     mar_list = []  # mar_list: 측정한 MAR값들을 저장하는 리스트
-    th4 = Thread(target=play_sound("close_your_mouth.mp3"))  # 동시 실행을 위해 스레드 사용
+    th4 = threading.Thread(target=play_sound("close_your_mouth.mp3"))  # 동시 실행을 위해 스레드 사용
     th4.start()
+
     time.sleep(5)  # 안내문구가 재생될 동안 일시정지
-    th_ring4 = Thread(target=play_sound("ppi.mp3"))
+    th_ring4 = threading.Thread(target=play_sound("ppi.mp3"))
     th_ring4.start()
+
     time.sleep(1)
     for i in range(7):
         mar_list.append(mouth_mar)  # MAR을 mar_list에 append
@@ -252,6 +260,11 @@ EAR_THRESH = 0  # EAR 기준값
 MAR_THRESH = 0  # MAR 기준값
 OPEN_MAR = 0  # 입 벌렸을 때의 mar
 
+th_open = threading.Thread(target=init_open_ear)
+th_close = threading.Thread(target=init_close_ear)
+mouth_open = threading.Thread(target=init_open_mouth)
+mouth_close = threading.Thread(target=init_close_mouth)
+
 EAR_CONSEC_FRAMES = 20
 COUNTER = 0  # 졸음 프레임 카운터
 YAWN_COUNT = -1  # 하품 횟수 카운트
@@ -283,7 +296,7 @@ predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 def generate():
     face_recog = FaceRecog()
     print(face_recog.image_face_names)  # 사진의 이름 출력
-    is_first = 0  # Thread는 한번만 실행되야 하기 때문에
+    is_first = 0  #Thread는 한번만 실행되야 하기 때문에
 
     while True:
 
@@ -312,13 +325,16 @@ def generate():
         # 얼굴 확인이 끝나면
         else:
             if is_first == 0:  # 처음 실행되는 경우, EAR 값 초기화
-                th_open = Thread(target=init_open_ear)
+                global th_open
                 th_open.start()
-                th_close = Thread(target=init_close_ear(th_open))
+
+                global th_close
                 th_close.start()
-                mouth_open = Thread(target=init_open_mouth(th_close))
+
+                global mouth_open
                 mouth_open.start()
-                mouth_close = Thread(target=init_close_mouth(mouth_open))
+
+                global mouth_close
                 mouth_close.start()
 
                 is_first = 1
@@ -365,7 +381,8 @@ def generate():
                         mid_closing = timeit.default_timer()
                         closing_time = round((mid_closing - start_closing), 3)
                         level = def_level(closing_time)
-                        alarm_thread = Thread(target=def_alarm(level))
+                        alarm_thread = threading.Thread(target=def_alarm(level))
+
                         alarm_thread.start()  # 알람 울림
 
                         ALARM_FLAG = True
@@ -390,7 +407,7 @@ def generate():
                         start_yawn = timeit.default_timer()
                         YAWN_TIMER = True
 
-                    if (timeit.default_timer() - start_yawn > 2.0):
+                    if timeit.default_timer() - start_yawn > 2.0:
                         if not YAWN_FLAG:
                             YAWN_COUNT += 1
                             YAWN_FLAG = True
