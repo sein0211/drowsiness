@@ -23,7 +23,7 @@ class DrowsinessData(db.Model):
     end_time = db.Column(db.DateTime,nullable=False)
 
 class User(db.Model):
-    __table_nam__='User'
+    __table_name__='User'
     id = db.Column(db.Integer, primary_key=True)
     nickname = db.Column(db.String(20), nullable=False)
     student_id = db.Column(db.String(20), unique=True, nullable=False)

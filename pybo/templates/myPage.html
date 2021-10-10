@@ -17,15 +17,16 @@
                     <h2>MY PAGE</h2>
                 </div>
                 <div id="pf_content">
-                    <dl>
+                    <div id="pf_img">
+                        <img  src="{{ url_for('static', filename='image/sini.jpg') }}" width="100px">
                         <form action = "http://localhost:5000/myPage/uploader"
                               method="post"
                               enctype="multipart/form-data">
                             <input type="file" name ="file"/>
                             <input type="submit"/>
                         </form>
-                        <dt>프로필사진</dt>
-                        <dd></dd>
+                    </div>
+                    <dl>
                         <dt>닉네임</dt>
                         <dd>{{ username }}</dd>
                         <dt>학번</dt>
@@ -33,6 +34,7 @@
                         <dt>ID</dt>
                         <dd>{{ id }}</dd>
                     </dl>
+
                 </div>
                 <div id="dr_content">
                     <dl>
@@ -41,7 +43,6 @@
                     </dl>
                     <div class="print_sleep">
                         <h3>sleep moment</h3>
-
                     </div>
                 </div>
             </div>
