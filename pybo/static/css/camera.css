@@ -1,0 +1,24 @@
+a{
+    text-decoration: none;
+}
+.wrap{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.container{
+    display:flex;
+    float:left;
+    justify-content: center;
+    align-items:center;
+    margin-top:60px;
+    text-align:center;
+}
+#logo{
+    padding-top:100px;
+}
+#header{
+    background-color: rgb(181,214,146);
+}
