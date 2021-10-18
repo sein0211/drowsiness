@@ -8,9 +8,8 @@ class UserLoginForm(FlaskForm):
     password = StringField('비밀번호', validators = [DataRequired()])
     
 class UserCreateForm(FlaskForm):
-    student_id = StringField('학번', validators=[DataRequired(), Length(min=6, max=7)])
-    id = StringField('아이디', validators=[DataRequired(), Length(min=6, max=20)])
-    username = StringField('사용자이름', validators=[DataRequired(), Length(min=3, max=20)])
+    student_id = StringField('학번', validators=[DataRequired(), Length(min=7, max=7)])
+    nickname = StringField('닉네임', validators=[DataRequired(), Length(min=3, max=20)])
     # DataRequired(): 필수 항목 지정 / Length(min=3, max=20): 길이 조건
     password1 = PasswordField('비밀번호', validators=[
         DataRequired(), EqualTo('password2', '비밀번호가 일치하지 않습니다')])

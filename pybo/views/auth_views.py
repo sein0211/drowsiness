@@ -14,10 +14,11 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 def signup():
     form = UserCreateForm()
     if request.method == 'POST' and form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
+        user = User.query.filter_by(student_id=form.student_id.data).first()
         if not user:
-            user = User(username=form.username.data,
-                        password=generate_password_hash(form.password1.data))
+            user = User(student_id=form.student_id.data,
+                        nickname=form.nickname.data,
+                        password=form.password1.data)
             db.session.add(user)
             db.session.commit()
             return redirect(url_for('main.index'))
