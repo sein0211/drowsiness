@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session,redirect
 
-bp = Blueprint('main', __name__, template_folder='templates', url_prefix='/')
+bp = Blueprint('main', __name__, template_folder='templates', url_prefix='/main')
 # 여기서 main 은 url_for 함수에 사용된다.
 
 @bp.route('/')
