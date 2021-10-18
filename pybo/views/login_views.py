@@ -5,7 +5,7 @@ from werkzeug.utils import redirect
 from pybo.forms import UserLoginForm
 from pybo.models import User
 
-bp = Blueprint('login', __name__, url_prefix='/login')
+bp = Blueprint('login', __name__, url_prefix='/')
 
 
 # @bp.route('/')
