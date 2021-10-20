@@ -12,7 +12,7 @@
 
     <body>
         <form method="post" class="post-form">
-          <img src="{{ url_for('static', filename='image/logo.png')}}"  alt="">
+          <img src="{{ url_for('static', filename='logoImage/logo.png')}}"  alt="">
           {{ form.csrf_token() }} 
           {% include "form_errors.html" %}
         <div class="form-group">
