@@ -1,10 +1,10 @@
 import os
 
-from flask import Flask, Blueprint, render_template, request
+from flask import Flask, Blueprint, render_template, request, redirect
 
 bp = Blueprint('myPage', __name__, url_prefix='/myPage')
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'C:\projects\drowsiness\image'
+app.config['UPLOAD_FOLDER'] = 'C:\projects\drowsiness\pybo\static\image'
 
 
 @bp.route('/')
@@ -21,8 +21,8 @@ def upload_file():
 def uploader_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
-        return '파일이 성공적으로 업로드되었습니다.'
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], "profile.png"))
+        return redirect('/myPage')
 
 
 if __name__ == '__main__':
