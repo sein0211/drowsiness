@@ -24,8 +24,7 @@ class DrowsinessData(db.Model):
     
 class User(db.Model):
     __table_name__='User'
-    user_id = db.Column(db.String(6), primary_key=True, nullable=False)
-    student_id = db.Column(db.String(6), nullable=False)
-    username = db.Column(db.String(20), nullable=False)
-    id = db.Column(db.String(20), unique=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.String(7), nullable=False, unique=True)
+    nickname = db.Column(db.String(10), nullable=False)
     password = db.Column(db.String(20), nullable=False)

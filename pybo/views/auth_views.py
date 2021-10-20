@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, url_for, render_template, flash, request
-from werkzeug.security import generate_password_hash
 from werkzeug.utils import redirect
 
 from pybo import db
@@ -17,8 +16,8 @@ def signup():
         user = User.query.filter_by(student_id=form.student_id.data).first()
         if not user:
             user = User(student_id=form.student_id.data,
-                        nickname=form.nickname.data,
-                        password=form.password1.data)
+                        password=form.password1.data,
+                        nickname=form.nickname.data)
             db.session.add(user)
             db.session.commit()
             return redirect(url_for('main.index'))
