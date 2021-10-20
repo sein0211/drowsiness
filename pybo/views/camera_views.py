@@ -384,7 +384,7 @@ def generate():
                         closing_time = round((mid_closing - start_closing), 3)
                         level = def_level(closing_time)
                         if d_cap_is==False:
-                            cv2.imwrite('/static/capture_image/drowsiness_capture.png', frame, params=[cv2.IMWRITE_PNG_COMPRESSION, 0])
+                            cv2.imwrite('pybo/static/capture_image/drowsiness_capture.png', frame, params=[cv2.IMWRITE_PNG_COMPRESSION, 0])
                             d_cap_is=True
 
                         alarm_thread = threading.Thread(target=def_alarm(level))
