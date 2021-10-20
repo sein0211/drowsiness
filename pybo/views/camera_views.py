@@ -274,6 +274,7 @@ TIMER_FLAG = False
 ALARM_FLAG = False
 YAWN_FLAG = False
 YAWN_TIMER = False
+d_cap_is=False
 
 ALARM_COUNT = 0
 
@@ -315,7 +316,7 @@ def generate():
         global ALARM_COUNT
         global both_ear
         global mouth_mar
-
+        global d_cap_is
         # is_recognized 가 5이상이면 얼굴이 인식되었다고 판단
         if face_recog.is_recognized < 5:
             frame = face_recog.get_face_frame()
@@ -381,8 +382,11 @@ def generate():
                         mid_closing = timeit.default_timer()
                         closing_time = round((mid_closing - start_closing), 3)
                         level = def_level(closing_time)
-                        alarm_thread = threading.Thread(target=def_alarm(level))
+                        if d_cap_is==False:
+                            cv2.imwrite('drowsiness_capture.png', frame, params=[cv2.IMWRITE_PNG_COMPRESSION, 0])
+                            d_cap_is=True
 
+                        alarm_thread = threading.Thread(target=def_alarm(level))
                         alarm_thread.start()  # 알람 울림
 
                         ALARM_FLAG = True
