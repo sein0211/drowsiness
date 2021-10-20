@@ -35,12 +35,12 @@ class FaceRecog():  # 얼굴 인식을 위한 class
         self.image_face_names = []  # 사진의 얼굴 이름을 넣을 리스트
         self.is_recognized = 0  # 얼굴 인식이 완료되었는지 확인하는 변수(5 이상이 되면 얼굴 인식 완료)
 
-        dirname = 'image'  # 얼굴 사진이 들어있는 디렉토리 이름
+        dirname = 'pybo/static/image'  # 얼굴 사진이 들어있는 디렉토리 이름
         files = os.listdir(dirname)  # listdir(): 디렉토리에 어떤 파일들이 있는지 리스트로 불러오기
         for filename in files:
             name, ext = os.path.splitext(filename)  # 파일이름을 2개의 이름으로 분리(이름, 확장자명)
             # 예를 들어, sein.jpg --> sein 과 .jpg
-            if ext == '.jpg':  # 확장자가 jpg 면
+            if ext == '.png':  # 확장자가 jpg 면
                 self.image_face_names.append(name)  # 얼굴 이름 리스트에 이름 추가
                 pathname = os.path.join(dirname, filename)  # 파일이름을 경로에 합치기
                 img = face_recognition.load_image_file(pathname)  # 위 경로를 통해 face_recognition에서 해당 이미지 불러오기
