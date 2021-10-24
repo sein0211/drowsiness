@@ -38,6 +38,6 @@ def load_logged_in_user():
 def load_drowsiness_d_time():
     d_time= session.get('d_time')
     if d_time is None:
-        g.d_time = None
+        g.d_data = None
     else:
-        g.d_time=DrowsinessData.query.get(d_time)
+        g.d_data=DrowsinessData.query.get(d_time)
