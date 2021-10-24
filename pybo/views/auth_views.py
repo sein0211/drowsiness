@@ -4,7 +4,7 @@ from werkzeug.utils import redirect
 
 from pybo import db
 from pybo.forms import UserCreateForm
-from pybo.models import User
+from pybo.models import User, DrowsinessData
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 #auth라는 URL 접두어로 시작하는 URL이 호출되면 auth_views.py 파일의 함수들이 호출될 수 있도록 블루프린트 추
@@ -33,3 +33,11 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = User.query.get(user_id)
+
+
+def load_drowsiness_d_time():
+    d_time= session.get('d_time')
+    if d_time is None:
+        g.d_time = None
+    else:
+        g.d_time=DrowsinessData.query.get(d_time)
