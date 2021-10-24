@@ -7,9 +7,9 @@
         <title>얘들아 수업듣자!</title>
     </head>
     <body>
-        <div class="wrap">
+        <body class="wrap">
             <div id="logo">
-                <img src="{{ url_for('static', filename='image/logo.png') }}" width="200px">
+                <img src="{{ url_for('static', filename='logoImage/logo.png') }}" width="200px">
             </div>
             {% if g.user %}
             <div class="my_box">
@@ -28,4 +28,5 @@
                 <div class="btn"> <a href="{{url_for('myPage.myPage2')}}"> MY PAGE </a> </div>
                 <div class="btn"> <a href="{{url_for('camera.camera2')}}"> CLASS </a> </div>
             </div>
+
 </html>
