@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, session,redirect
+from flask import Blueprint, render_template, session, redirect, g
 
 bp = Blueprint('main', __name__, template_folder='templates', url_prefix='/main')
 # 여기서 main 은 url_for 함수에 사용된다.
@@ -12,6 +12,3 @@ def index():
 def logout():
     session.pop('student_id',None)
     return redirect('/login')
-
-
-
