@@ -9,7 +9,7 @@
     <body>
         <div class="wrap">
             <div id="logo">
-                <img src="{{ url_for('static', filename='logoImage/logo.png') }}" width="200px">
+                <img src="{{ url_for('static', filename='image/logo.png') }}" width="200px">
             </div>
         <div class="container">
             <div class="profile">
@@ -18,7 +18,7 @@
                 </div>
                 <div id="pf_content">
                     <div id="pf_img">
-                        <img src="{{ url_for('static', filename='image/profile.png') }}" width="100px">
+                        <img  src="{{ url_for('static', filename='image/sini.jpg') }}" width="100px">
                         <form action = "http://localhost:5000/myPage/uploader"
                               method="post"
                               enctype="multipart/form-data">
@@ -26,13 +26,21 @@
                             <input type="submit"/>
                         </form>
                     </div>
+                    {% if g.user %}
                     <dl>
+                        <dt>닉네임</dt>
+                        <dd>{{ g.user.nickname }}</dd>
                         <dt>학번</dt>
-                        <dd>{{ student_id }}</dd>
+                        <dd>{{ g.user.student_id }}</dd>
+                    </dl>
+                    {% else %}
+                    <dl>
                         <dt>닉네임</dt>
                         <dd>{{ nickname }}</dd>
+                        <dt>학번</dt>
+                        <dd>{{ student_id }}</dd>
                     </dl>
-
+                    {% endif %}
                 </div>
                 <div id="dr_content">
                     <dl>
