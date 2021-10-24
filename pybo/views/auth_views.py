@@ -33,8 +33,8 @@ def load_logged_in_user():
 
     if user_id is None and d_time is None:  # user_id와 d_time에 데이터가 없는 경우
         g.user = None
-    elif d_time is None:
-        g.user = User.query.get(user_id)    # d_time에 데이터가 없는 경우, user_id만 get
+    elif d_time is None:                    # d_time에 데이터가 없는 경우, user_id만 get
+        g.user = User.query.get(user_id)
     elif user_id is None:                   # user_id에 데이터가 없는 경우, d_time만 get
         g.user=User.query.get(d_time)
     else:                                   # d_time, user_id 데이터가 있는 경우 모두 get
