@@ -4,6 +4,13 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          a { text-decoration: none; color: black; }
+          a:visited { text-decoration: none; }
+          a:hover { text-decoration: none; }
+          a:focus { text-decoration: none; }
+          a:hover, a:active { text-decoration: none; }
+        </style>
         <title>얘들아 수업듣자!</title>
     </head>
     <body class="wrap">
@@ -14,13 +21,13 @@
             <div class="my_box">
                 <div id="hello_txt">{{ g.user.nickname }}님 반가워요!</div>
                 <!--<div id="log_btn"><a href="">LOGOUT</a></div>-->
-                <button id="log_btn",type="button" onclick="location.href='/logout' ">LOGOUT</button>
+                <button id="log_btn",type="button" onclick="location.href='/main/logout' ">LOGOUT</button>
             </div>
             {% else %}
             <div class="my_box">
                 <div id="hello_txt">사용자님 반가워요!</div>
                 <!--<div id="log_btn"><a href="">LOGOUT</a></div>-->
-                <button id="log_btn",type="button" onclick="location.href='/logout' ">LOGOUT</button>
+                <button id="log_btn",type="button" onclick="location.href='/main/logout' ">LOGOUT</button>
             </div>
             {% endif %}
             <div class="container">

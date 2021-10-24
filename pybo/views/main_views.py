@@ -10,5 +10,5 @@ def index():
 
 @bp.route('/logout',methods=['GET'])
 def logout():
-    session.pop('student_id',None)
-    return redirect('/login')
+    session.clear()
+    return redirect('/')
