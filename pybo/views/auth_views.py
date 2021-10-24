@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Blueprint, url_for, render_template, flash, request
+from flask import Blueprint, url_for, render_template, flash, request, session, g
 from werkzeug.utils import redirect
 
 from pybo import db
@@ -20,7 +20,16 @@ def signup():
                         nickname=form.nickname.data)
             db.session.add(user)
             db.session.commit()
-            return redirect(url_for('main.index'))
+            return redirect(url_for('login.login'))
         else:
             flash('이미 존재하는 사용자입니다.')
     return render_template('auth/signup.html', form=form)
+
+
+@bp.before_app_request
+def load_logged_in_user():
+    user_id = session.get('user_id')
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = User.query.get(user_id)
