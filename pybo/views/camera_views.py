@@ -430,7 +430,7 @@ def generate():
         key = cv2.waitKey(1) & 0xFF
 
         if key == ord("q"):
-            break
+            return render_template('camera.html')
 
 
 @bp.route('/')
