@@ -39,6 +39,8 @@
                         <dd>{{ g.user.nickname }}</dd>
                         <dt>학번</dt>
                         <dd>{{ g.user.student_id }}</dd>
+                        <dt>총 집중시간</dt>
+                        <dd>{{ g.drowsinessdata.d_time }}</dd>
                     </dl>
                     {% else %}
                     <dl>
@@ -46,16 +48,15 @@
                         <dd>{{ nickname }}</dd>
                         <dt>학번</dt>
                         <dd>{{ student_id }}</dd>
+                        <dt>총 집중시간</dt>
+                        <dd>{{ d_time }}</dd>
                     </dl>
                     {% endif %}
                 </div>
                 <div id="dr_content">
-                    <dl>
-                        <dt>총 집중시간</dt>
-                        <dd></dd>
-                    </dl>
                     <div class="print_sleep">
                         <h3>sleep moment</h3>
+                        <img  src="{{ url_for('static', filename='capture_image/drowsiness_capture.png') }}" width="100px">
                     </div>
                 </div>
             </div>
