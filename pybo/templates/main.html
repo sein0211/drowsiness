@@ -7,18 +7,25 @@
         <title>얘들아 수업듣자!</title>
     </head>
     <body>
-        <div class="wrap">    
+        <div class="wrap">
             <div id="logo">
-                <img src="{{ url_for('static', filename='logoImage/logo.png') }}" width="200px">
+                <img src="{{ url_for('static', filename='image/logo.png') }}" width="200px">
             </div>
+            {% if g.user %}
             <div class="my_box">
-                <div id="hello_txt">{{ student_id }}님 반가워요!</div>
+                <div id="hello_txt">{{ g.user.nickname }}님 반가워요!</div>
                 <!--<div id="log_btn"><a href="">LOGOUT</a></div>-->
                 <button id="log_btn",type="button" onclick="location.href='/logout' ">LOGOUT</button>
             </div>
+            {% else %}
+            <div class="my_box">
+                <div id="hello_txt">사용자님 반가워요!</div>
+                <!--<div id="log_btn"><a href="">LOGOUT</a></div>-->
+                <button id="log_btn",type="button" onclick="location.href='/logout' ">LOGOUT</button>
+            </div>
+            {% endif %}
             <div class="container">
                 <div class="btn"> <a href="{{url_for('myPage.myPage2')}}"> MY PAGE </a> </div>
                 <div class="btn"> <a href="{{url_for('camera.camera2')}}"> CLASS </a> </div>
             </div>
-    </body>
 </html>
