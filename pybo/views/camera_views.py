@@ -299,6 +299,7 @@ def generate():
     print(face_recog.image_face_names)  # 사진의 이름 출력
     is_first = 0  #Thread는 한번만 실행되야 하기 때문에
 
+
     while True:
 
         global OPEN_EAR
@@ -317,6 +318,9 @@ def generate():
         global both_ear
         global mouth_mar
         global d_cap_is
+        global start_time       # EAR, MAR 측정하고 난 시각 (측정 시작)
+        global end_time         # 프로그램이 종료된 시각
+        global not_d_time       # 프로그램 실행 시간 - 졸고있는 시간 총 합
 
         # is_recognized 가 5이상이면 얼굴이 인식되었다고 판단
         if face_recog.is_recognized < 5:
@@ -339,6 +343,7 @@ def generate():
                 global mouth_close
                 mouth_close.start()
 
+                start_time = time.time()    # 시간 측정 시작
                 is_first = 1
 
             frame = face_recog.get_frame()
@@ -430,6 +435,9 @@ def generate():
         key = cv2.waitKey(1) & 0xFF
 
         if key == ord("q"):
+            end_time=time.time()    # 시간 측정 종료
+            not_d_time=end_time-start_time-sum(closed_eyes_time)    # not_d_time = 시간 - 졸고있는시간의 합
+            print("d_time :",not_d_time)
             return render_template('camera.html')
 
 
