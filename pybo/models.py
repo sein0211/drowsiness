@@ -1,4 +1,5 @@
 from pybo import db
+import datetime as dt
 
 class User(db.Model):
     __table_name__='User'
