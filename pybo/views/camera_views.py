@@ -1,17 +1,21 @@
-from flask import Blueprint
-from flask import render_template
-import cv2
 import os
-import numpy as np
+import threading
 import time
 import timeit
+
+import cv2
 import dlib
-from scipy.spatial import distance as dist
-from imutils import face_utils
-import threading
 import face_recognition  # dlib에 있는 거 불러온것
+import numpy as np
 # import camera  # camera.py 불러온 것
 import pygame
+from flask import Blueprint, g
+from flask import render_template
+from imutils import face_utils
+from scipy.spatial import distance as dist
+
+from pybo import db
+from pybo.models import User
 
 bp = Blueprint('camera', __name__, url_prefix='/camera')
 
@@ -437,7 +441,19 @@ def generate():
         if key == ord("q"):
             end_time=time.time()    # 시간 측정 종료
             not_d_time=end_time-start_time-sum(closed_eyes_time)    # not_d_time = 시간 - 졸고있는시간의 합
-            print("d_time :",not_d_time)
+            print("d_time :",sum(closed_eyes_time))
+            print("not_d_time :",not_d_time)
+
+            user = User.query.filter_by(student_id=g.user.student_id).first()
+            s = int(sum(closed_eyes_time))
+            hours = s // 3600
+            s = s - hours * 3600
+            mu = s // 60
+            ss = s - mu * 60
+            Dtime = str(hours) + ":" + str(mu) + ":" + str(ss)
+            print(Dtime)
+            user.d_time = Dtime
+            db.session.commit()
             return render_template('camera.html')
 
 

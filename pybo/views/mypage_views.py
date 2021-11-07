@@ -4,7 +4,7 @@ from flask import Flask, Blueprint, render_template, request, redirect
 
 bp = Blueprint('myPage', __name__, url_prefix='/myPage')
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'C:/Users/user/PycharmProjects/summerproject/pybo/static/image'
+app.config['UPLOAD_FOLDER'] = 'C:\projects\drowsiness\pybo\static\image'
 
 
 @bp.route('/')
