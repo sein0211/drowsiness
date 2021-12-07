@@ -9,6 +9,7 @@ covid19으로 인해, 많은 학생들이 컴퓨터나 노트북으로 비대면
 ### 2. 프로젝트 구현 환경
 OS : Window 10
 IDE :  Pycharm 2021.1, anaconda 4.10.1
+
 사용한 주요 라이브러리 : dlib, face_recognition, opencv, pygame, numpy, time, os
 
 ### 3. 프로젝트 주요 기능 / 설계
